@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Register</title>
+  <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+</head>
+<body>
+
+  <div class="container">
+    <h2>Register</h2>
+
+    <!-- Flash Messages -->
+    {% with messages = get_flashed_messages(with_categories=true) %}
+      {% if messages %}
+        <ul class="flashes">
+          {% for category, msg in messages %}
+            {% set cls = category if category in ['success', 'danger'] else 'neutral' %}
+            <li class="{{ cls }}">{{ msg }}</li>
+          {% endfor %}
+        </ul>
+      {% endif %}
+    {% endwith %}
+
+    <!-- Registration Form -->
+    <form action="{{ url_for('main.register') }}" method="POST">
+      <p><input type="text" name="username" placeholder="Username" required></p>
+      <p><input type="email" name="email" placeholder="Email" required></p>
+      <p><input type="password" name="password" placeholder="Password" required></p>
+      <p><button type="submit">Register</button></p>
+      <p style="text-align:center; margin-top:10px;">
+        Already have an account? <a href="{{ url_for('main.login') }}">Login here</a>
+      </p>
+    </form>
+  </div>
+
+</body>
+</html>

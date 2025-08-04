@@ -1,0 +1,20 @@
+{% extends "layout.html" %}
+{% block title %}Edit Employee{% endblock %}
+
+{% block content %}
+<div class="form-container">
+    <h2>Edit Employee</h2>
+
+    <form method="POST">
+        <p>
+            <input type="text" name="name" value="{{ employee.name }}" placeholder="Employee Name" required>
+        </p>
+        <p>
+            <input type="email" name="email" value="{{ employee.email }}" placeholder="Employee Email" required>
+        </p>
+        <p>
+            <button type="submit" class="btn-submit">Update Employee</button>
+        </p>
+    </form>
+</div>
+{% endblock %}
